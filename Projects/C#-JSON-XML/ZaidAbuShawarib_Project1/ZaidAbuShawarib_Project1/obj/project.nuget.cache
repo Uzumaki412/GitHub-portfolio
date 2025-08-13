@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Fe4KbYuJTGc=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\zaids\\source\\repos\\Sem4\\info3138 - declarative languages\\ZaidAbuShawarib_Project1\\ZaidAbuShawarib_Project1\\ZaidAbuShawarib_Project1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\zaids\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\zaids\\.nuget\\packages\\newtonsoft.json.schema\\4.0.1\\newtonsoft.json.schema.4.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
