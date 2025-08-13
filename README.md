@@ -28,7 +28,10 @@ I am an indie full-stack developer and also a computer programmer. Most coding p
 
 #
 
-###Latest Projects
+### Latest Projects
+
+
+
 
 
           
