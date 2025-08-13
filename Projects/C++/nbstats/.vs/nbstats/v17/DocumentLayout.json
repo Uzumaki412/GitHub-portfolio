@@ -1,0 +1,81 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\zaids\\source\\repos\\Sem2C\u002B\u002B\\nbstats\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9FA6D3-22CE-4445-9204-E0D787E4E6B0}|nbstats\\nbstats.vcxproj|C:\\Users\\zaids\\source\\repos\\Sem2C\u002B\u002B\\nbstats\\nbstats\\nbstats.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{6D9FA6D3-22CE-4445-9204-E0D787E4E6B0}|nbstats\\nbstats.vcxproj|solutionrelative:nbstats\\nbstats.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9FA6D3-22CE-4445-9204-E0D787E4E6B0}|nbstats\\nbstats.vcxproj|C:\\Users\\zaids\\source\\repos\\Sem2C\u002B\u002B\\nbstats\\nbstats\\header.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{6D9FA6D3-22CE-4445-9204-E0D787E4E6B0}|nbstats\\nbstats.vcxproj|solutionrelative:nbstats\\header.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9FA6D3-22CE-4445-9204-E0D787E4E6B0}|nbstats\\nbstats.vcxproj|C:\\Users\\zaids\\source\\repos\\Sem2C\u002B\u002B\\nbstats\\nbstats\\MathFunctions.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{6D9FA6D3-22CE-4445-9204-E0D787E4E6B0}|nbstats\\nbstats.vcxproj|solutionrelative:nbstats\\MathFunctions.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "nbstats.cpp",
+              "DocumentMoniker": "C:\\Users\\zaids\\source\\repos\\Sem2C\u002B\u002B\\nbstats\\nbstats\\nbstats.cpp",
+              "RelativeDocumentMoniker": "nbstats\\nbstats.cpp",
+              "ToolTip": "C:\\Users\\zaids\\source\\repos\\Sem2C\u002B\u002B\\nbstats\\nbstats\\nbstats.cpp",
+              "RelativeToolTip": "nbstats\\nbstats.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGMAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-22T17:23:45.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MathFunctions.cpp",
+              "DocumentMoniker": "C:\\Users\\zaids\\source\\repos\\Sem2C\u002B\u002B\\nbstats\\nbstats\\MathFunctions.cpp",
+              "RelativeDocumentMoniker": "nbstats\\MathFunctions.cpp",
+              "ToolTip": "C:\\Users\\zaids\\source\\repos\\Sem2C\u002B\u002B\\nbstats\\nbstats\\MathFunctions.cpp*",
+              "RelativeToolTip": "nbstats\\MathFunctions.cpp*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-01T17:06:25.249Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "header.hpp",
+              "DocumentMoniker": "C:\\Users\\zaids\\source\\repos\\Sem2C\u002B\u002B\\nbstats\\nbstats\\header.hpp",
+              "RelativeDocumentMoniker": "nbstats\\header.hpp",
+              "ToolTip": "C:\\Users\\zaids\\source\\repos\\Sem2C\u002B\u002B\\nbstats\\nbstats\\header.hpp",
+              "RelativeToolTip": "nbstats\\header.hpp",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-07T00:22:37.722Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
