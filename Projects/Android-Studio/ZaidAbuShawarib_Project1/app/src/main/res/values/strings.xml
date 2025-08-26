@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">ZaidAbuShawarib_Project1</string>
-    <string name="nav_addEmail">Email</string>
-    <string name="nav_list">List</string>
-    <string name="nav_addPhone">Phone</string>
-
-</resources>
