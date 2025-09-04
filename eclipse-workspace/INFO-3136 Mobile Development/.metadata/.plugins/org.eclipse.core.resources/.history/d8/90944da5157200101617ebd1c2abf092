@@ -1,0 +1,87 @@
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Program Name: EnigmaRotor.java
+ * Purpose: 
+ * Author: Zaid Abu Shawarib 1196606
+ * Date: Jul 21, 2025
+ */
+
+public class EnigmaRotor {
+	private String permutations;
+	private int offset;
+	private String invertPermutaion;
+	
+	public EnigmaRotor(String _permutation) {
+		permutations = _permutation;
+		invertPermutaion = this.invertKey();
+		offset = 0; // -A
+	}
+	
+	public int get_offset() {
+		return offset;
+	}
+	
+	public void set_offset(int _offset) {
+		offset = _offset;
+	}
+	
+	
+	public void reset_offset() {
+		offset = 0;
+	}
+	
+	
+	public String get_permutation() {
+		return permutations;
+	}
+	
+	public String get_inverse_permutation() {
+		return invertPermutaion;
+	}
+	
+	public boolean advance() {
+//		offset = (offset + 1) % 26; // -A
+//		if(offset % 26 == 0)return true;
+//		else return false;
+		 offset = (offset + 1) % 26;
+		    return offset == 0;  // Return true only when wrapping back to 0
+	}
+	
+	
+	public int apply_permutation(int index, String permutation, int offset) {
+		int adjustedIndex = (index + offset) % 26; // Adjust for offset
+		char permutedChar = permutation.charAt(adjustedIndex);
+		return (permutedChar - 'A' - offset + 26) % 26; // Reverse the offset adjustment
+	}
+	
+	public String invertKey()
+	{
+		HashMap<Character,Character>map = new HashMap<Character, Character>();
+		for(int i = 0; i < 26; i++)
+		{
+			char alpChar = EnigmaConstants.ALPHABET.charAt(i);
+			char perChar = this.get_permutation().charAt(i);
+			map.put(alpChar, perChar);
+		}
+		
+		ArrayList<Map.Entry<Character, Character>> arr = new ArrayList<>(map.entrySet());
+		
+		arr.sort(Comparator.comparing(Map.Entry::getValue));
+		
+		String returnString = "";
+		for(Map.Entry<Character, Character> entry : arr)
+		{
+			returnString += entry.getKey();
+		}
+		
+		
+		return returnString;
+	}
+	
+
+}
+//end class

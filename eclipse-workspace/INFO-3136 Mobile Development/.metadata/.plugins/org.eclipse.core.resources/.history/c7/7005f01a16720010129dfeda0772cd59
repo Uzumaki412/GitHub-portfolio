@@ -1,0 +1,249 @@
+ /**
+ * Program Name: EnigmaModel.java
+ * Purpose: This class defines the starter version of the EnigmaModel class,
+ * but it doesn't completely implement any of the methods. That will be your job.
+ * NOTE: this class holds the main method for the application.
+ * BASE CODE Coders: Eric Roberts and Jed Rembold, Willamette University, OR
+ * 
+ * PROJECT CODER(S): PUT YOUR NAME(S) AND SECTION NUMBER(S) HERE
+ * Date:
+ */
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
+public class EnigmaModel 
+{
+	
+	/* Private instance variables */
+	private HashMap<String, Boolean> keyPressed; // Map to track pressed keys
+	private HashMap<String, Boolean> lampStatus; // Map to track lamp status
+	private EnigmaRotor slowRotor;
+    private EnigmaRotor mediumRotor;
+    private EnigmaRotor fastRotor;
+    private EnigmaRotor reflectorRotor;
+	
+    public enum RotorIndex {
+    	SLOW, MEDIUM, FAST;
+    }
+    
+	private ArrayList<EnigmaView> views;
+
+    public EnigmaModel() 
+    {
+        views = new ArrayList<EnigmaView>();
+        keyPressed = new HashMap<String, Boolean>();
+        lampStatus = new HashMap<String, Boolean>();
+        slowRotor = new EnigmaRotor(EnigmaConstants.ROTOR_PERMUTATIONS[RotorIndex.SLOW.ordinal()]);
+        mediumRotor = new EnigmaRotor(EnigmaConstants.ROTOR_PERMUTATIONS[RotorIndex.MEDIUM.ordinal()]);
+        fastRotor = new EnigmaRotor(EnigmaConstants.ROTOR_PERMUTATIONS[RotorIndex.FAST.ordinal()]);
+        //fastRotor.set_offset(1);
+        reflectorRotor = new EnigmaRotor(EnigmaConstants.REFLECTOR_PERMUTATION);
+        
+        for(int i = 0; i < 26; i++) 
+		{
+			String ch = Character.toString((char) ('A' + i));
+			keyPressed.put(ch, false); 
+		}
+        
+        for(int i = 0; i < 26; i++)
+        {
+        	String ch = Character.toString((char) ('A' + i));
+			lampStatus.put(ch, false); 
+        }
+    }
+
+/**
+ * Adds a view to this model.
+ *
+ * @param view The view being added
+ */
+
+    public void addView(EnigmaView view)
+    {
+        views.add(view);
+    }
+
+/**
+ * Sends an update request to all the views.
+ */
+
+    public void update() 
+    {
+        for (EnigmaView view : views)
+        {
+            view.update();
+        }
+    }
+
+/**
+ * Returns true if the specified letter key is pressed.
+ *
+ * @param letter The letter key being tested as a one-character string.
+ */
+
+    public boolean isKeyDown(String letter)
+    {
+    	
+    	
+        return keyPressed.get(letter);
+    }
+
+/**
+ * Returns true if the specified lamp is lit.
+ *
+ * @param letter The lamp being tested as a one-character string.
+ */
+
+    public boolean isLampOn(String letter) 
+    {
+        return lampStatus.get(letter);//place holder code to turn off compile error 
+    }
+
+/**
+ * Returns the letter visible through the rotor at the specified inded.
+ *
+ * @param index The index of the rotor (0-2)
+ * @return The letter visible in the indicated rotor
+ */
+
+    public String getRotorLetter(int index)
+    {
+    	switch (index) {
+			case 0:
+				int offsetSlow = slowRotor.get_offset();
+				return Character.toString('A' + offsetSlow);
+			case 1:
+				int offsetMedium = mediumRotor.get_offset();
+				return Character.toString('A' + offsetMedium);
+			case 2:
+				int offsetFast = fastRotor.get_offset();
+				return Character.toString('A' + offsetFast);//we are subtracting one to match the +1 offset so the router still shows A even though its offet 1
+			default:
+				return "Invalid index"; // Invalid index
+		}
+    	
+    }
+
+/**
+ * Called automatically by the view when the specified key is pressed.
+ *
+ * @param key The key the user pressed as a one-character string
+ */
+
+    public void keyPressed(String key)
+    {
+    	
+    	int keyFastInt = 0;
+    	try {
+    		keyFastInt = fastRotor.apply_permutation((int) key.charAt(0) - 'A', fastRotor.get_permutation(), fastRotor.get_offset()); //we subtract 'A' to get a in-bounds index from 0 - 26
+    		int keyMediumInt = mediumRotor.apply_permutation(keyFastInt, mediumRotor.get_permutation(), mediumRotor.get_offset());
+    		int keySlowInt = slowRotor.apply_permutation(keyMediumInt, slowRotor.get_permutation(), slowRotor.get_offset());
+    		int keyReflectorInt = reflectorRotor.apply_permutation(keySlowInt, reflectorRotor.get_permutation(), slowRotor.get_offset());
+    		keySlowInt = slowRotor.apply_permutation(keyReflectorInt , slowRotor.get_inverse_permutation(), slowRotor.get_offset());
+    		keyMediumInt = mediumRotor.apply_permutation(keySlowInt, mediumRotor.get_inverse_permutation(), mediumRotor.get_offset());
+    		keyFastInt = fastRotor.apply_permutation(keyMediumInt, fastRotor.get_inverse_permutation(), fastRotor.get_offset());
+    		
+    		
+    	}catch(Exception ex)
+    	{
+    		System.out.println("ERROR AT KEY PRESSED " + ex.getMessage());
+    	}
+    	
+        // Write the code to handle a key press
+		keyPressed.put(key, true); 
+		String indexString = Character.toString('A' + keyFastInt);//add back 'A' to get the ASCII code of the final number
+		lampStatus.put(indexString, true);
+		update(); 
+    }
+
+/**
+ * Called automatically by the view when the specified key is released.
+ *
+ * @param key The key the user released as a one-character string
+ */
+
+    public void keyReleased(String key)	
+    {
+    	update();
+    	int keyFastInt = 0;
+    	try {
+    		keyFastInt = fastRotor.apply_permutation((int) key.charAt(0) - 'A', fastRotor.get_permutation(), fastRotor.get_offset()); //we subtract 'A' to get a in-bounds index from 0 - 26
+    		int keyMediumInt = mediumRotor.apply_permutation(keyFastInt, mediumRotor.get_permutation(), mediumRotor.get_offset());
+    		int keySlowInt = slowRotor.apply_permutation(keyMediumInt, slowRotor.get_permutation(), slowRotor.get_offset());
+    		int keyReflectorInt = reflectorRotor.apply_permutation(keySlowInt, reflectorRotor.get_permutation(), slowRotor.get_offset());
+    		keySlowInt = slowRotor.apply_permutation(keyReflectorInt , slowRotor.get_inverse_permutation(), slowRotor.get_offset());
+    		keyMediumInt = mediumRotor.apply_permutation(keySlowInt, mediumRotor.get_inverse_permutation(), mediumRotor.get_offset());
+    		keyFastInt = fastRotor.apply_permutation(keyMediumInt, fastRotor.get_inverse_permutation(), fastRotor.get_offset());
+    		
+    		
+    		
+    	}catch(Exception ex)
+    	{
+    		System.out.println("ERROR AT KEY RELEASED " + ex.getMessage());
+    	}
+    	rotorClicked(2); // Advance the fast rotor when a key is released
+        // Write the code to handle a key release
+    	keyPressed.put(key, false);
+    	String indexString = Character.toString('A' + keyFastInt);
+		lampStatus.put(indexString, false); 
+		update();
+    	
+    }
+
+/**
+ * Called automatically by the view when the rotor at the specified
+ * index (0-2) is clicked.
+ *
+ * @param index The index of the rotor that was clicked
+ */
+    
+    public void advanceOffsets()
+    {
+    	if(fastRotor.advance())
+    	{
+   			if(mediumRotor.advance())
+   			{
+   				if(slowRotor.advance())
+   				{
+   					fastRotor.reset_offset();
+   					mediumRotor.reset_offset();
+   					slowRotor.reset_offset();
+   				}
+   			}
+   		}
+    }
+
+    public void rotorClicked(int index) 
+    {
+        // Write the code to run when the specified rotor is clicked\
+    	switch (index) {
+    	case 0:
+    		advanceOffsets();
+    		System.out.println("Slow rotor advanced to position: " + slowRotor.get_offset());
+    		break;
+    	case 1:
+    		advanceOffsets();
+    		System.out.println("mid rotor advanced to position: " + mediumRotor.get_offset());
+    		break;
+    	case 2:
+    		advanceOffsets();
+    		System.out.println("fast rotor advanced to position: " + fastRotor.get_offset());
+			break;
+    	}
+    		update(); 
+    }
+
+/* Main program */
+
+    public static void main(String[] args)
+    {
+        EnigmaModel model = new EnigmaModel();
+        EnigmaView view = new EnigmaView(model);
+        model.addView(view);
+    }
+    
+}//end class EnigmaModel
+
+

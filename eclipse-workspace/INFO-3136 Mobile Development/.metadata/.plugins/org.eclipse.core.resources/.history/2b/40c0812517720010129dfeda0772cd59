@@ -1,0 +1,99 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Program Name: EnigmaRotor.java
+ * Purpose: 
+ * Author: Zaid Abu Shawarib 1196606
+ * Date: 2025-08-05
+ */
+
+public class EnigmaRotor {
+	private String permutations;
+	private int offset;
+	private String invertPermutaion;
+	
+	public EnigmaRotor(String _permutation) {
+		permutations = _permutation;
+		invertPermutaion = this.invertKey();
+		offset = 0; // -A
+	}
+	
+	public int get_offset() {
+		return offset;
+	}
+	
+	public void set_offset(int _offset) {
+		offset = _offset;
+	}
+	
+	
+	public void reset_offset() {
+		offset = 0;
+	}
+	
+	
+	public String get_permutation() {
+		return permutations;
+	}
+	
+	public String get_inverse_permutation() {
+		return invertPermutaion;
+	}
+	
+	public boolean advance() {
+		offset = (offset + 1) % 26; // -A
+		return offset == 0;
+		
+		
+	}
+	
+	
+	public int apply_permutation(int index, String permutation, int offset) {
+		int adjustedIndex = (index + offset) % 26; // Adjust for offset
+		char permutedChar = permutation.charAt(adjustedIndex);
+		return (permutedChar - 'A' - offset + 26) % 26; // Reverse the offset adjustment
+	}
+	
+	class Pair<A, B> {
+    public A alphabetValue;
+    public B permutationValue;
+
+    public Pair(A first, B second) {
+        this.alphabetValue = first;
+        this.permutationValue = second;
+    }
+	}
+	
+	//Create the invert key
+	//pairs each index of alphabet with the permutation
+	//then orders the pairs by permuttationValue - inverting the key
+	//returns the inverted key as a string
+	public String invertKey()
+	{
+		ArrayList<Pair<Character, Character>> alphabetCombinePermutation = new ArrayList<Pair<Character, Character>>();
+		
+		for(int i = 0; i < 26; i++)
+		{
+			char alphabetChar = EnigmaConstants.ALPHABET.charAt(i);
+			char permutationChar = this.get_permutation().charAt(i);
+			alphabetCombinePermutation.add(new Pair<>(alphabetChar, permutationChar));
+		}
+		
+		Collections.sort(alphabetCombinePermutation, Comparator.comparing(pair -> pair.permutationValue));
+		
+		String returnString = "";
+		for(Pair<Character, Character> entry : alphabetCombinePermutation)
+		{
+			returnString += entry.alphabetValue;
+		}
+		
+		return returnString;
+	}
+	
+
+}
+//end class

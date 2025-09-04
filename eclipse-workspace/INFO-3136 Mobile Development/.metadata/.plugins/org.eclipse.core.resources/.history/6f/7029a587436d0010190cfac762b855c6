@@ -1,0 +1,16 @@
+/**
+ * Program Name: PrintChar.java
+ * Purpose: 
+ * Author: Zaid Abu Shawarib 1196606
+ * Date: Jul 30, 2025
+ */
+
+public class PrintChar {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+//end class

@@ -1,0 +1,25 @@
+/**
+ * Program Name: PrintChar.java
+ * Purpose:  create a thread object that prints a character 100 times 
+ * Author: Zaid Abu Shawarib 1196606
+ * Date: Jul 30, 2025
+ */
+
+public class PrintChar extends Thread {
+
+	private char character;
+	private int times;
+	
+	public PrintChar(char character, int times) {
+		this.character = character;
+		this.times = times;
+	}
+	
+	public void run() {
+		for (int i = 0; i < times; i++) {
+			System.out.print(character);
+		}
+		System.out.println(); // Print a new line after finishing
+	}
+}
+//end class
